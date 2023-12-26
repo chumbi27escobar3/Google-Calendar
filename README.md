@@ -1,6 +1,6 @@
 Intrusions
 - Download Visual Studio Code
-- Download Files 
+- Download Files from GitHub
 - Download Python (install pip)
 - Execute with "python main.py".
 - Authenticate with the user andresaea27@gmail.com
