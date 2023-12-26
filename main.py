@@ -7,10 +7,7 @@ from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 
 # Define the scopes for accessing Google Calendar
-SCOPES = ['https://www.googleapis.com/auth/calendar','https://www.googleapis.com/auth/calendar.readonly',
-          'https://www.googleapis.com/auth/calendar.events.owned']
-
-        
+SCOPES = ['https://www.googleapis.com/auth/calendar']
 
 def main():
     """Authenticate with Google Calendar API."""
@@ -62,26 +59,40 @@ def list_events():
         start_time = event['start'].get('dateTime', event['start'].get('date'))
         print(start_time, event["summary"])
 
+    print('   New event    ')
+    print('Insert the summay')
+    summary = input()
+    print('Insert the location')
+    location = input()
+    print('Insert the description')
+    description = input()
+    print('Insert the start date')
+    print('Format 2023-12-26T14:00:00+02:00')
+    starDate = input()
+    print('Insert the end date')
+    endDate = input()
+    print('Inser the attendees')
+    attendees = input()
+
     try:
         event = {
-            "summary": "Veevart Quiz",
-            "Location": "Online",
-            "description": "Quiz about Google Calendar",
+            "summary": summary,
+            "Location": location,
+            "description": description,
             "colorId": 3,
             "start": {
-                "dateTime": "2023-12-26T14:00:00+02:00",
+                "dateTime": starDate,
                 "timeZone": "America/Bogota"
             },
             "end": {
-                "dateTime": "2023-12-26T18:00:00+02:00",
+                "dateTime": endDate,
                 "timeZone": "America/Bogota"
             },
             "recurrence": [
-                "RRULE :FREQ=DAILY;COUNT=1"
+                "RRULE:FREQ=DAILY;COUNT=1"
             ],
             "attendees": [
-                {"email": "manuel@veevart.com"},
-                {"email": "camilo_aea@hotmai.com"}
+                {"email": attendees}
             ]
         }
 
